@@ -1,0 +1,25 @@
+image: node:latest
+
+install-job:
+  stage: build
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+test-job:
+  stage: test
+  script:
+    - echo "This job tests something, but takes more time than test-job1."
+
+deploy-prod:
+  stage: deploy
+  script:
+    - echo "This job deploys from the branch."
+    - CI=false npm run build
+    - echo "-- build completed succesfully"
+  dependencies:
+    - install-job
+  only:
+    - main
