@@ -11,6 +11,7 @@ export const useMockApp = () => {
     if (isDevelopment) {
       // Mock user
       user.updateUser({
+        redirectAuth: '/login',
         token: 'mock-token',
         pessoa: {
           id_pessoa: 1,

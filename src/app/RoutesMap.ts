@@ -4,7 +4,7 @@ import { RouteProps } from 'react-router-dom'
 
 const HomePageLazy = React.lazy(() => import('pages/Home'))
 
-export const getRoutesMap = (basename = '/solicitacao'): RouteProps[] => {
+export const getRoutesMap = (basename = '/solicitacoes'): RouteProps[] => {
   return [
     {
       exact: true,
