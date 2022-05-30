@@ -31,7 +31,7 @@ export const useSolicitation = ({
     try {
       const response = await getSolicitation(id_solicitacao)
 
-      if (response.data.cadastroSolicitacao.length !== 0) {
+      if (response.data?.cadastroSolicitacao?.length !== 0) {
         const solicitacao = response.data.cadastroSolicitacao.rows[0]
 
         setSolicitacao({
@@ -54,12 +54,12 @@ export const useSolicitation = ({
     try {
       const response = await getStudentByRa(ra_aluno)
 
-      if (response.data.aluno.length !== 0) {
+      if (response.data?.aluno?.length !== 0) {
         setSolicitacao({
           ...solicitacao,
           ra_aluno,
-          nome_aluno: response.data.aluno[0].Pessoa.nome_pessoa,
-          email_aluno: response.data.aluno[0].Pessoa.email,
+          nome_aluno: response.data.aluno[0].Pessoa?.nome_pessoa,
+          email_aluno: response.data.aluno[0].Pessoa?.email,
         })
       }
     } catch (err) {

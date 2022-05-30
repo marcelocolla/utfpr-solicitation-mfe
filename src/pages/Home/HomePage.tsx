@@ -50,7 +50,7 @@ export const HomePage = (): JSX.Element => {
   }
 
   return (
-    <PageLayout home title="Solicitações">
+    <PageLayout title="Solicitações">
       <WrapperTabs>
         <SolicitationRadioGroup callbackFunction={setSolicitacoes} />
       </WrapperTabs>
