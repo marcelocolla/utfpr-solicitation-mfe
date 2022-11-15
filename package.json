@@ -6,6 +6,10 @@
     "test": "echo \"Warning: add test configuration\"",
     "start": "webpack serve --config webpack/webpack.dev.config.ts",
     "build": "webpack build --config webpack/webpack.prod.config.ts",
+    "pretty:metrics": "prettier --write \"dist/**/*.js\" --semi",
+    "lint:metrics": "eslint --fix --ext .js dist",
+    "pre-metrics": "tsc --p tsconfig.metrics.json",
+    "metrics": "npm run pretty:metrics && npm run lint:metrics && node metrics/plato-analyze.js",
     "clean": "rm -rf dist"
   },
   "keywords": [],
@@ -44,6 +48,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-webpack-plugin": "^3.1.1",
     "html-webpack-plugin": "^5.5.0",
+    "plato-analyze": "^1.2.6",
     "prettier": "^2.5.1",
     "process": "^0.11.10",
     "ts-loader": "^9.2.8",
