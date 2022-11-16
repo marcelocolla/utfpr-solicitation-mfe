@@ -1,0 +1,15 @@
+Arquivo,Manutenibilidade,Ciclomatico,Sloc_logico,Sloc_fisico,Dificuldade,Esforco,Duracao,Numero_Linhas
+app/MainApp.js,90.315,1,3,21,7.273,1149.989,63.888,36
+app/useMockApp.js,67.554,2,18,29,7.682,3309.618,183.868,78
+pages/Home/index.js,100,1,0,2,1.5,23.265,1.292,6
+helpers/dateFormat.js,81.31,1,7,8,6.5,1043.507,57.973,36
+hooks/solicitation/index.js,100,1,0,2,1,4.755,0.264,3
+services/httpClient.js,73.235,2,4,10,6.417,870.786,48.377,30
+services/student/studentService.js,92.233,1,3,7,6.875,602.033,33.446,21
+components/FormSolicitation/FormSolicitation.schema.js,71.462,1,4,9,12,2213.728,122.985,42
+components/FormSolicitation/index.js,100,1,0,2,1,4.755,0.264,3
+components/FormSolicitationFields/FormSolicitationFields.js,80.826,6,7,74,9.875,6622.548,367.919,116
+components/FormSolicitationFields/index.js,100,1,0,2,1,4.755,0.264,3
+components/PageLayout/PageLayout.js,73.305,1,11,23,9.952,3582.857,199.048,72
+components/PageLayout/index.js,100,1,0,2,1,4.755,0.264,3
+components/SolicitationRadioGroup/index.js,100,1,0,2,1,4.755,0.264,3
