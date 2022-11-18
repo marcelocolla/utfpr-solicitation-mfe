@@ -9,7 +9,7 @@
     "pretty:metrics": "prettier --write \"dist/**/*.js\" --semi",
     "lint:metrics": "eslint --fix --ext .js dist",
     "pre-metrics": "tsc --p tsconfig.metrics.json",
-    "metrics": "npm run pretty:metrics && npm run lint:metrics && node metrics/plato-analyze.js",
+    "metrics": "node metrics/plato-analyze.js",
     "clean": "rm -rf dist"
   },
   "keywords": [],

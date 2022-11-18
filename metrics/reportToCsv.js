@@ -33,7 +33,6 @@ function reportExtractData(reports) {
         Dificuldade: formatNumber(halstead.difficulty),
         Esforco: formatNumber(halstead.effort),
         Duracao: formatNumber(halstead.time),
-        Numero_Linhas: halstead.length,
       }
 
       output.push(info)
