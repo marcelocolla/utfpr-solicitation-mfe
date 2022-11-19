@@ -56,15 +56,16 @@ export const HomePage = (): JSX.Element => {
       </WrapperTabs>
 
       <div>
-        {solicitacoes?.map(({ id_liberacao, Aluno, data_inicio, data_fim }) => (
-          <Card
-            key={id_liberacao}
-            name={Aluno.Pessoa.nome_pessoa}
-            leftInfo={data_inicio}
-            rightInfo={data_fim}
-            onEdition={() => exibirCadastro(id_liberacao)}
-          />
-        ))}
+        {solicitacoes &&
+          solicitacoes.map((item) => (
+            <Card
+              key={item.id_liberacao}
+              name={item.Aluno.Pessoa.nome_pessoa}
+              leftInfo={item.data_inicio}
+              rightInfo={item.data_fim}
+              onEdition={() => exibirCadastro(item.id_liberacao)}
+            />
+          ))}
       </div>
 
       <Button type="button" name="criarSolicitacao" onClickFunction={newSolicitation}>
