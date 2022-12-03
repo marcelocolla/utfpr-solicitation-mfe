@@ -32,7 +32,7 @@ export const FormSolicitation = ({ id_solicitacao, viewOnly }: SolicitacaoProps)
       if (response.status !== 200) {
         alert('Houve um problema ao salvar, contate o suporte!')
       } else {
-        history.go(0)
+        history.goBack()
       }
     } catch (err) {
       console.error('>>> Exception solicitation update')
@@ -49,7 +49,7 @@ export const FormSolicitation = ({ id_solicitacao, viewOnly }: SolicitacaoProps)
       if (response.status !== 200) {
         alert('Houve um problema ao cadastrar, contate o suporte!')
       } else {
-        history.go(0)
+        history.goBack()
       }
     } catch (err) {
       console.error('>>> Exception solicitation create')
@@ -70,7 +70,7 @@ export const FormSolicitation = ({ id_solicitacao, viewOnly }: SolicitacaoProps)
       if (response.status !== 200) {
         alert('Houve um problema ao aprovar, contate o suporte!')
       } else {
-        history.go(0)
+        history.goBack()
       }
     } catch (err) {
       console.error('>>> Exception liberation update')

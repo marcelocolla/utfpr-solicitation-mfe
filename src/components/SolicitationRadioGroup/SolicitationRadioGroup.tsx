@@ -14,7 +14,7 @@ const getSolicitacoesByStatus = async (status: string) => {
   const loadSolicitation = async (url: string) => {
     const response = await httpClient.get(`/solicitacao/cadastro/${url}`)
 
-    return response.data.cadastroSolicitacao.rows
+    return response.data.cadastroSolicitacao?.rows || []
   }
 
   if (status === PENDENTES) {
@@ -39,7 +39,7 @@ const getSolicitacoesByProfessorStatus = async (status: string, userId: string) 
       permissaoAcesso,
     })
 
-    return response.data.cadastroSolicitacao.rows
+    return response.data.cadastroSolicitacao?.rows || []
   }
 
   if (status === PENDENTES) {
@@ -49,7 +49,7 @@ const getSolicitacoesByProfessorStatus = async (status: string, userId: string) 
   if (status === CANCELADAS) {
     const response = await httpClient.get(`/solicitacao/cadastro/getSolicitacaoCancelada/${userId}`)
 
-    return response.data.cadastroSolicitacao.rows
+    return response.data.cadastroSolicitacao?.rows || []
   }
 
   if (status === APROVADAS) {

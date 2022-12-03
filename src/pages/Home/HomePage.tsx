@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, Button, Card } from '@utfprfabricadesoftware/utfpr-lib-ui-react'
+import { Typography } from '@material-ui/core'
 
 import { PageLayout } from 'components/PageLayout'
 import { FormSolicitation } from 'components/FormSolicitation'
@@ -66,6 +67,12 @@ export const HomePage = (): JSX.Element => {
               onEdition={() => exibirCadastro(item.id_liberacao)}
             />
           ))}
+
+        {Array.isArray(solicitacoes) && solicitacoes.length === 0 && (
+          <Typography variant="subtitle1" gutterBottom>
+            Nenhum registro encontrado!
+          </Typography>
+        )}
       </div>
 
       <Button type="button" name="criarSolicitacao" onClickFunction={newSolicitation}>
