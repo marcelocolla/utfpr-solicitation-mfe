@@ -2,11 +2,13 @@ import React from 'react'
 import { Modal, Button, Card } from '@utfprfabricadesoftware/utfpr-lib-ui-react'
 import { Typography } from '@material-ui/core'
 
+import useUserStore from 'shared/utfpr-core-shared-mfe/UserStore'
 import { PageLayout } from 'components/PageLayout'
 import { FormSolicitation } from 'components/FormSolicitation'
 import { SolicitationRadioGroup } from 'components/SolicitationRadioGroup'
 
 import { WrapperTabs } from './HomePage.styles'
+import { executeSolicitationByStatus } from 'services/solicitation/solicitationByStatusService'
 
 type SolicitacaoProps = {
   id_liberacao: number
@@ -19,15 +21,18 @@ type SolicitacaoProps = {
   }
 }
 
+const initialState = {
+  open: false,
+  viewOnly: false,
+  selection: 0,
+}
+
 export const HomePage = (): JSX.Element => {
-  const initialState = {
-    open: false,
-    viewOnly: false,
-    selection: 0,
-  }
+  const user = useUserStore?.()
 
   const [solicitacoes, setSolicitacoes] = React.useState<SolicitacaoProps[]>()
   const [state, setState] = React.useState(initialState)
+  const [status, setStatus] = useState('pendentes')
 
   const title = state.viewOnly ? 'Solicitação' : 'Nova Solicitação'
 
@@ -50,10 +55,20 @@ export const HomePage = (): JSX.Element => {
     setState({ ...initialState })
   }
 
+  async function onRefreshList() {
+    const result = await executeSolicitationByStatus(user, status)
+
+    setSolicitacoes(result)
+  }
+
   return (
     <PageLayout title="Solicitações">
       <WrapperTabs>
-        <SolicitationRadioGroup callbackFunction={setSolicitacoes} />
+        <SolicitationRadioGroup
+          status={status}
+          setStatus={setStatus}
+          callbackFunction={setSolicitacoes}
+        />
       </WrapperTabs>
 
       <div>
@@ -80,7 +95,11 @@ export const HomePage = (): JSX.Element => {
       </Button>
 
       <Modal visible={state.open} close={fecharCadastro} title={title}>
-        <FormSolicitation viewOnly={state.viewOnly} id_solicitacao={state.selection} />
+        <FormSolicitation
+          viewOnly={state.viewOnly}
+          id_solicitacao={state.selection}
+          onRefreshList={onRefreshList}
+        />
       </Modal>
     </PageLayout>
   )
