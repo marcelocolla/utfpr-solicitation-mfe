@@ -18,9 +18,10 @@ import FormSolicitationSchema from './FormSolicitation.schema'
 type SolicitacaoProps = {
   viewOnly?: boolean
   id_solicitacao: number
+  onRefreshList(): void
 }
 
-export const FormSolicitation = ({ id_solicitacao, viewOnly }: SolicitacaoProps) => {
+export const FormSolicitation = ({ id_solicitacao, viewOnly, onRefreshList }: SolicitacaoProps) => {
   const history = useHistory()
   const user = useUserStore?.()
   const { liberado, solicitacao, loadStudentByRa } = useSolicitation({ id_solicitacao })
@@ -32,7 +33,7 @@ export const FormSolicitation = ({ id_solicitacao, viewOnly }: SolicitacaoProps)
       if (response.status !== 200) {
         alert('Houve um problema ao salvar, contate o suporte!')
       } else {
-        history.goBack()
+        onRefreshList()
       }
     } catch (err) {
       console.error('>>> Exception solicitation update')
@@ -49,7 +50,7 @@ export const FormSolicitation = ({ id_solicitacao, viewOnly }: SolicitacaoProps)
       if (response.status !== 200) {
         alert('Houve um problema ao cadastrar, contate o suporte!')
       } else {
-        history.goBack()
+        onRefreshList()
       }
     } catch (err) {
       console.error('>>> Exception solicitation create')
